@@ -11,7 +11,7 @@ app.use(express.json());
 // app.use(cors());
 app.use(SETTINGS.RouterPaths.videos, videosRouter);
 
-app.delete(SETTINGS.RouterPaths.testingAllData, (req: Request, res: Response) => {
-    videos.length = 0;
-    res.send(HTTP_STATUSES.NO_CONTENT_204)
-})
+// app.delete(SETTINGS.RouterPaths.testingAllData, (req: Request, res: Response) => {
+//     videos.length = 0;
+//     res.send(HTTP_STATUSES.NO_CONTENT_204)
+// })

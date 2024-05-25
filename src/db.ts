@@ -1,6 +1,6 @@
-import {ErrorsType} from "./types";
+import {ErrorsType, VideoType} from "./types";
 
-export let videos = [
+export let videos: VideoType[] = [
     {
         "id": 0,
         "title": "string",
