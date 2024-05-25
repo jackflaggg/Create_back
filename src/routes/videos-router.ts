@@ -159,14 +159,13 @@ videosRouter.put("/:id", (req: RequestWithParamsAndBody<VideoParamsModel, Update
 })
 
 videosRouter.delete("/:id", (req: RequestWithParams<VideoParamsModel>, res: Response) => {
-    let id = +req.params.id;
-    videos.filter((element, index, array) => {
-        if (videos[index].id === id){
-            videos.splice(index, 1);
+    for (let i = 0; i < videos.length; i++) {
+        if (videos[i].id === +req.params.id){
+            videos.splice(i, 1);
             res.sendStatus(HTTP_STATUSES.NO_CONTENT_204);
-            return;
+            return
         }
-    })
-    return res.sendStatus(HTTP_STATUSES.NOT_FOUND_404);
+    }
 
+    return res.sendStatus(HTTP_STATUSES.NOT_FOUND_404)
 })
