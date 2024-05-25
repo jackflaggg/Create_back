@@ -40,13 +40,5 @@ export type CreateVideosType = {
 
 export type RequestWithBody<B> = Request<{}, {}, B>
 export type RequestWithParamsAndBody<T, B> = Request<T, {}, B>;
+export type RequestWithParams<T> = Request<T>
 
-export type UpdateVideoInputModel = {
-    title:	string,
-    author:	string,
-    availableResolutions: typeof AvailableResolutions,
-    canBeDownloaded: boolean,
-
-    minAgeRestriction: number,
-    publicationDate: string,
-}

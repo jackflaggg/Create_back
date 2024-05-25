@@ -4,12 +4,14 @@ import {
     CreateVideosType,
     ErrorsType,
     HTTP_STATUSES,
-    RequestWithBody,
-    RequestWithParamsAndBody, UpdateVideoInputModel,
+    RequestWithBody, RequestWithParams,
+    RequestWithParamsAndBody,
     VideoType
 } from "../types/types";
 import {videos} from "../db";
 import {validateDate} from "../validators/validDate";
+import {VideoParamsModel} from "../models/VideoParamsModel";
+import {UpdateVideoInputModel} from "../models/UpdateVideoInputModel";
 
 export const videosRouter = Router();
 
@@ -18,7 +20,7 @@ videosRouter.get("/", (req: Request,
     res.status(HTTP_STATUSES.OK_200).send(videos)
 });
 
-videosRouter.get("/:id", (req: Request,
+videosRouter.get("/:id", (req: RequestWithParams<VideoParamsModel>,
                           res: Response<VideoType>) => {
     let {id: idVideos} = req.params;
     const videoFind = videos.find(elem => elem.id === +idVideos);
@@ -86,7 +88,7 @@ videosRouter.post("/", (req: RequestWithBody<CreateVideosType>,
 
 })
 
-videosRouter.put("/:id", (req: RequestWithParamsAndBody<{id: string}, UpdateVideoInputModel>,
+videosRouter.put("/:id", (req: RequestWithParamsAndBody<VideoParamsModel, UpdateVideoInputModel>,
                           res: Response<VideoType | ErrorsType>) => {
     let errors: ErrorsType = { errorsMessages: [] };
     let {title, author, canBeDownloaded, minAgeRestriction, publicationDate, availableResolutions} = req.body;
@@ -156,7 +158,7 @@ videosRouter.put("/:id", (req: RequestWithParamsAndBody<{id: string}, UpdateVide
     }
 })
 
-videosRouter.delete("/:id", (req: Request<{id: string}>, res: Response) => {
+videosRouter.delete("/:id", (req: RequestWithParams<VideoParamsModel>, res: Response) => {
     let id = +req.params.id;
     videos.filter((element, index, array) => {
         if (videos[index].id === id){
