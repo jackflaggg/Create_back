@@ -21,3 +21,12 @@ export enum HTTP_STATUSES {
 
     INTERNAL_SERVER_ERROR_500 = 500,
 }
+
+export type ErrorsMessageType = {
+    field: string,
+    message: string
+}
+
+export type ErrorsType = {
+    errorsMessages: ErrorsMessageType[]
+}

@@ -1,3 +1,5 @@
+import {ErrorsType} from "./types";
+
 export let videos = [
     {
         "id": 0,
@@ -8,7 +10,11 @@ export let videos = [
         "createdAt": "2024-05-25T09:16:16.701Z",
         "publicationDate": "2024-05-25T09:16:16.701Z",
         "availableResolutions": [
-            "P144"
+            "P1440"
         ]
     }
 ];
+
+export const errors: ErrorsType = {
+    errorsMessages: []
+}
