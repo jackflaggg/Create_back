@@ -25,7 +25,7 @@ videosRouter.get("/:id", (req: RequestWithParams<VideoParamsModel>,
     let {id: idVideos} = req.params;
     const videoFind = videos.find(elem => elem.id === +idVideos);
     if (!videoFind) {
-        res.status(HTTP_STATUSES.NOT_FOUND_404);
+        res.sendStatus(HTTP_STATUSES.NOT_FOUND_404);
         return;
     }
     res.status(HTTP_STATUSES.OK_200).send(videoFind);
@@ -159,6 +159,9 @@ videosRouter.put("/:id", (req: RequestWithParamsAndBody<VideoParamsModel, Update
 })
 
 videosRouter.delete("/:id", (req: RequestWithParams<VideoParamsModel>, res: Response) => {
+    console.log(req.params.id)
+    console.log(videos);
+
     for (let i = 0; i < videos.length; i++) {
         if (videos[i].id === +req.params.id){
             videos.splice(i, 1);
@@ -166,6 +169,5 @@ videosRouter.delete("/:id", (req: RequestWithParams<VideoParamsModel>, res: Resp
             return
         }
     }
-
     return res.sendStatus(HTTP_STATUSES.NOT_FOUND_404)
 })
