@@ -2,5 +2,5 @@ import {app} from "./app";
 import {SETTINGS} from "./settings";
 
 app.listen(SETTINGS.PORT, ()=> {
-    console.log(`APP started on port: ${SETTINGS.PORT}`);
+    console.log(`APP started : ${SETTINGS.PORT}`);
 })
