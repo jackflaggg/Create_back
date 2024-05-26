@@ -1,7 +1,7 @@
 import express, {Express, Request, Response} from "express";
 import {SETTINGS} from "./settings";
 import {videosRouter} from "./routes/videos-router";
-import {videos} from "./db";
+import {videos} from "./db/db";
 import {HTTP_STATUSES} from "./types/types";
 // import cors from 'cors';
 

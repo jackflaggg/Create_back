@@ -8,7 +8,7 @@ import {
     RequestWithParamsAndBody,
     VideoType
 } from "../types/types";
-import {videos} from "../db";
+import {videos} from "../db/db";
 import {validateDate} from "../validators/validDate";
 import {VideoParamsModel} from "../models/VideoParamsModel";
 import {UpdateVideoInputModel} from "../models/UpdateVideoInputModel";
@@ -159,9 +159,6 @@ videosRouter.put("/:id", (req: RequestWithParamsAndBody<VideoParamsModel, Update
 })
 
 videosRouter.delete("/:id", (req: RequestWithParams<VideoParamsModel>, res: Response) => {
-    console.log(req.params.id)
-    console.log(videos);
-
     for (let i = 0; i < videos.length; i++) {
         if (videos[i].id === +req.params.id){
             videos.splice(i, 1);
