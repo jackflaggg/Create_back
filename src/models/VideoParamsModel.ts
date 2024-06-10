@@ -1,3 +1,3 @@
 export type VideoParamsModel = {
-    id: string
+    id: string | number
 }

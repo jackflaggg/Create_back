@@ -67,8 +67,8 @@ videosRouter.post("/", (req: RequestWithBody<CreateVideosType>,
         return;
     }
 
-    const createdAt = new Date();
-    const publicationDate = new Date(createdAt);
+    const createdAt: Date = new Date();
+    const publicationDate: Date = new Date(createdAt);
     publicationDate.setDate(createdAt.getDate() + 1);
 
     const newVideo: VideoType = {
